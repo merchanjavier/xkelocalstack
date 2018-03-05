@@ -3,6 +3,8 @@ package com.xke.xebia.localstack;
 import com.amazon.sqs.javamessaging.ProviderConfiguration;
 import com.amazon.sqs.javamessaging.SQSConnectionFactory;
 import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import com.amazonaws.services.sqs.AmazonSQS;
@@ -42,4 +44,14 @@ public class Configuration {
                                 "us-east-1"))
                 .build();
     }
-}
+
+    @Bean
+    public AmazonDynamoDB getAmazonDynamoDB() {
+        return AmazonDynamoDBClientBuilder.standard()
+                .withEndpointConfiguration(
+                        new AwsClientBuilder.EndpointConfiguration(
+                                "http://localhost:4569",
+                                "us-east-1"))
+                .build();
+    }
+ }
