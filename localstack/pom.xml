@@ -55,6 +55,12 @@
             <artifactId>aws-java-sdk-dynamodb</artifactId>
             <version>${aws-java-sdk-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
