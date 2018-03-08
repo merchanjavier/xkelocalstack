@@ -1,6 +1,6 @@
 # xkelocalstack
 
-- launch localstack with docker
+- launch localstack with docker:
+docker run --name xkelocalstack -it -p 4567-4578:4567-4578 -p 8080:8080 localstack/localstack
 - run scripts/init.sh
-- run Application.java
-- execute curl -X POST http://localhost:8989/items/AZERTY
+- run FanoutControllerTest.java
