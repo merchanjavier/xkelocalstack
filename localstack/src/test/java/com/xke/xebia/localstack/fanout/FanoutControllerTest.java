@@ -44,12 +44,10 @@ public class FanoutControllerTest {
     }
 
     private Callable<Integer> getScanCount(final String tableName) {
-        return new Callable<Integer>() {
-            public Integer call() {
-                ScanRequest scanRequest = new ScanRequest().withTableName(tableName);
-                ScanResult result = amazonDynamoDB.scan(scanRequest);
-                return result.getCount();
-            }
+        return () -> {
+            ScanRequest scanRequest = new ScanRequest().withTableName(tableName);
+            ScanResult result = amazonDynamoDB.scan(scanRequest);
+            return result.getCount();
         };
     }
 }
