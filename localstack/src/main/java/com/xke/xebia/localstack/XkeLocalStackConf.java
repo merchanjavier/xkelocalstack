@@ -55,16 +55,6 @@ public class XkeLocalStackConf {
     }
 
     @Bean
-    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        factory.setConnectionFactory(
-                new SQSConnectionFactory(
-                        new ProviderConfiguration(),
-                        getAmazonSQS()));
-        return factory;
-    }
-
-    @Bean
     public AmazonDynamoDB getAmazonDynamoDB() {
         AmazonDynamoDBClientBuilder clientBuilder = AmazonDynamoDBClientBuilder.standard();
 
@@ -76,5 +66,15 @@ public class XkeLocalStackConf {
         }
 
         return clientBuilder.build();
+    }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(
+                new SQSConnectionFactory(
+                        new ProviderConfiguration(),
+                        getAmazonSQS()));
+        return factory;
     }
 }
