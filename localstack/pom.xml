@@ -21,6 +21,7 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -30,16 +31,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>amazon-sqs-java-messaging-lib</artifactId>
-            <version>${amazon-sqs-java-messaging-lib-version}</version>
-            <type>jar</type>
-        </dependency>
+
+        <!-- AWS SDK -->
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-sns</artifactId>
@@ -55,10 +48,30 @@
             <artifactId>aws-java-sdk-dynamodb</artifactId>
             <version>${aws-java-sdk-version}</version>
         </dependency>
+
+        <!-- JMS -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-sqs-java-messaging-lib</artifactId>
+            <version>${amazon-sqs-java-messaging-lib-version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured-version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>3.0.0</version>
+            <version>${awaitility-version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -68,6 +81,8 @@
         <spring-boot-version>1.5.10.RELEASE</spring-boot-version>
         <aws-java-sdk-version>1.11.106</aws-java-sdk-version>
         <amazon-sqs-java-messaging-lib-version>1.0.4</amazon-sqs-java-messaging-lib-version>
+        <rest-assured-version>2.9.0</rest-assured-version>
+        <awaitility-version>3.0.0</awaitility-version>
     </properties>
 
     <build>

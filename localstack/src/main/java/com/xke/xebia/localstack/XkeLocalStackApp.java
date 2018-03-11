@@ -6,8 +6,8 @@ import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication
 @EnableJms
-public class Application {
+public class XkeLocalStackApp {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(XkeLocalStackApp.class, args);
     }
 }
