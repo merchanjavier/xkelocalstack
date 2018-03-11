@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 
-import static com.amazonaws.regions.Regions.DEFAULT_REGION;
+import static com.amazonaws.regions.Regions.US_EAST_1;
 
 @Configuration
 public class XkeLocalStackConf {
@@ -34,7 +34,7 @@ public class XkeLocalStackConf {
             clientBuilder.withEndpointConfiguration(
                     new AwsClientBuilder.EndpointConfiguration(
                             LOCALSTACK_SNS,
-                            DEFAULT_REGION.getName()));
+                            US_EAST_1.getName()));
         }
 
         return clientBuilder.build();
@@ -48,7 +48,7 @@ public class XkeLocalStackConf {
             clientBuilder.withEndpointConfiguration(
                     new AwsClientBuilder.EndpointConfiguration(
                             LOCALSTACK_SQS,
-                            DEFAULT_REGION.getName()));
+                            US_EAST_1.getName()));
         }
 
         return clientBuilder.build();
@@ -72,7 +72,7 @@ public class XkeLocalStackConf {
             clientBuilder.withEndpointConfiguration(
                     new AwsClientBuilder.EndpointConfiguration(
                             LOCALSTACK_DYNAMODB,
-                            DEFAULT_REGION.getName()));
+                            US_EAST_1.getName()));
         }
 
         return clientBuilder.build();
