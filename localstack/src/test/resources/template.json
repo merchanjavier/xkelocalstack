@@ -1,0 +1,81 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Resources" : {
+    "InvoicesQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "invoices"
+      }
+    },
+    "OrdersQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "orders"
+      }
+    },
+    "ItemsTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Ref": "InvoicesQueue"
+            },
+            "Protocol": "sqs"
+          },
+          {
+            "Endpoint": {
+              "Ref": "OrdersQueue"
+            },
+            "Protocol": "sqs"
+          }
+        ],
+        "TopicName": "items"
+      }
+    },
+    "InvoiceTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "Body",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "Body",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "TableName": "Invoice"
+      }
+    },
+    "OrderTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "Body",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "Body",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        }
+      },
+      "TableName": "Order"
+    }
+  }
+}
