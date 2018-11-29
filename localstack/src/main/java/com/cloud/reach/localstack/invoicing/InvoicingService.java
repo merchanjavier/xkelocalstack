@@ -15,6 +15,6 @@ public class InvoicingService {
     }
 
     @JmsListener(destination = "invoices")
-    public void processInvoice(String message) { new DynamoDB(amazonDynamoDB).getTable("Invoice").putItem(new Item().withString("Body", message));
+    public void processInvoice(String message) {
     }
 }
