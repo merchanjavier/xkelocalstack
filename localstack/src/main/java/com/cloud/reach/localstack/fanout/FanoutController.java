@@ -1,4 +1,4 @@
-package com.xke.xebia.localstack.fanout;
+package com.cloud.reach.localstack.fanout;
 
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.model.PublishRequest;
@@ -22,6 +22,6 @@ public class FanoutController {
 
     @PostMapping("/items/{itemId}")
     public void createItem(@PathVariable String itemId) {
-        amazonSNS.publish(new PublishRequest("arn:aws:sns:us-east-1:123456789012:items", itemId));
+        amazonSNS.publish(new PublishRequest("arn:aws:sns:eu-west-1:123456789012:items", itemId));
     }
 }

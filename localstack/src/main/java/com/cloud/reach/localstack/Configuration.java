@@ -1,4 +1,4 @@
-package com.xke.xebia.localstack;
+package com.cloud.reach.localstack;
 
 import com.amazon.sqs.javamessaging.ProviderConfiguration;
 import com.amazon.sqs.javamessaging.SQSConnectionFactory;
@@ -18,7 +18,7 @@ public class Configuration {
             .withEndpointConfiguration(
                     new AwsClientBuilder.EndpointConfiguration(
                             "http://localhost:4576",
-                            "us-east-1"));
+                            "eu-west-1"));
 
     @Bean
     public AmazonSQS getAmazonSQS() {
@@ -41,7 +41,7 @@ public class Configuration {
                 .withEndpointConfiguration(
                         new AwsClientBuilder.EndpointConfiguration(
                                 "http://localhost:4575",
-                                "us-east-1"))
+                                "eu-west-1"))
                 .build();
     }
 
@@ -51,7 +51,7 @@ public class Configuration {
                 .withEndpointConfiguration(
                         new AwsClientBuilder.EndpointConfiguration(
                                 "http://localhost:4569",
-                                "us-east-1"))
+                                "eu-west-1"))
                 .build();
     }
  }
