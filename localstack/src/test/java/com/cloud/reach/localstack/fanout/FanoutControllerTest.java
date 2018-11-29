@@ -34,7 +34,7 @@ public class FanoutControllerTest {
         Integer orderCountBefore = getScanCount("Order").call();
 
         // when
-        amazonSNS.publish(new PublishRequest("arn:aws:sns:eu-west:123456789012:items", "Cloudreach rules!"));
+        amazonSNS.publish(new PublishRequest("arn:aws:sns:eu-west-1:123456789012:items", "Cloudreach rules!"));
         await().atMost(5, SECONDS).until(getScanCount("Invoice"), greaterThan(invoiceCountBefore));
         await().atMost(5, SECONDS).until(getScanCount("Order"), greaterThan(orderCountBefore));
 
