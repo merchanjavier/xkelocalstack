@@ -1,4 +1,4 @@
-package com.xke.xebia.localstack.fanout;
+package com.cloud.reach.localstack.fanout;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
@@ -34,7 +34,7 @@ public class FanoutControllerTest {
         Integer orderCountBefore = getScanCount("Order").call();
 
         // when
-        amazonSNS.publish(new PublishRequest("arn:aws:sns:us-east-1:123456789012:items", "Xebia rules!"));
+        amazonSNS.publish(new PublishRequest("arn:aws:sns:eu-west-1:123456789012:items", "Keep it cloudy!"));
         await().atMost(5, SECONDS).until(getScanCount("Invoice"), greaterThan(invoiceCountBefore));
         await().atMost(5, SECONDS).until(getScanCount("Order"), greaterThan(orderCountBefore));
 
